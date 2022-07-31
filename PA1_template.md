@@ -25,6 +25,7 @@ hist(steps_by_day$steps, main = paste("Total Steps Each Day"), col="blue", xlab=
 cmean <- mean(steps_by_day$steps)
 cmedian <- median(steps_by_day$steps)
 ```
+<img src="plot1.png"
 
 * The total number of steps taken per day was `steps_by_day`.
 * The mean and median of the total number of steps that were taken was `r cmean` and `r cmedian` respectively.
@@ -36,6 +37,7 @@ steps_by_interval <- aggregate(steps ~ interval, data, mean)
 plot(steps_by_interval$interval,steps_by_interval$steps, type="l", xlab="Interval", ylab="Number of Steps",main="Average Number of Steps per Day by Interval")
 max_interval <- steps_by_interval[which.max(steps_by_interval$steps),1]
 ```
+<img src="plot2.png"
 
 * The average steps for each interval for all days was `steps_by_interval`.
 * The interval with the maximum number of steps was `r max_interval`.
@@ -56,6 +58,7 @@ mean_diff <- cmean_i - cmean
 median_diff <- cmedian_i - cmedian
 total_diff <- sum(steps_by_day_i$steps) - sum(steps_by_day$steps)
 ```
+<img src="plot3.png"
 
 * The total number of missing values in the data set is `r missing`.
 * The mean and median of the total number of steps taken per day, with missing data imputed, is `r cmean_i` and `r cmedian_i` respectively.
@@ -72,3 +75,4 @@ steps_by_interval_i <- aggregate(steps ~ interval + dow, imputed_data, mean)
 library(lattice)
 xyplot(steps_by_interval_i$steps ~ steps_by_interval_i$interval|steps_by_interval_i$dow, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 ```
+<img src="plot4.png"
